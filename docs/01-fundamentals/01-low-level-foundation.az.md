@@ -3,8 +3,10 @@ Salam. Bu başlıqda C dili ilə `socket` və şəbəkə proqramlaşdırması ü
 
 
 
+
 ## Pre-requisites
 Bu guidebook dan istifadə edərkən C proqramlaşdırma dilinin fundamentallarına: `basic data types`, `structs`, `pointers`, `memory management`, `type casting` konseptlərinə hakim olmağın gözlənilir. Bu mövzular haqqında məlumatın yoxdursa, gedib ilk öncə hackerrank-dan C tapşırıqlarını işləməyini məsləhət görürəm. Yox əgər buna 'oxot'-un yoxdursa yenə də birbaşa mövzuya atıla bilərsən, əlbəttə prosesin bir az sancılı olacaq və ağlında yaranan hər sual üçün araşdırma aparmalı olacaqsan. Bunlardan savayı istədiyin linux distrosunu (əgər ağlında biri yoxdursa ubuntu-nu məsləhət görürəm) qurmağını, və ya daha da yaxşısı WSL dən istifadə etməyin yaxşı olar, windows istifadəçiləri üçün ən yaxşı yoldur.
+
 
 
 
@@ -14,8 +16,10 @@ Yaxşı bəs heç düşünmüsən mi necə olur ki, yazdığım və ya yazacağ�
 
 
 
+
 ### User-Space (Ring 3)
 Bizim yazdığımız proqramlar (brauzerlər, oyunlar, və ya sənin yazdığın hər hansı birşey) `User-Space` də işləyir. Buradakı proseslərin imkanları məhduddur; Birbaşa `hardware`-ə toxuna bilmirlər.
+
 
 
 
@@ -30,8 +34,10 @@ Bəs yaxşı bizim bu `User-Space` proqramları şəbəkə üzərindən data gö
 
 
 
+
 ## Everything is a File & File Descriptors (FD)
 Əgər Linux əməliyyat sistemi ilə bir az vaxt keçirtmisənsə güman edirəm o məşhur "Everything in a Linux is a file" fikrini eşitmisən. Yaxşı bəs bu reallıqda nə mənaya gəlir? 
+
 
 
 
@@ -45,6 +51,7 @@ Yəni, bu o demək deyil ki, şəbəkə kartı diskdə .txt formatındakı bir f
 2. Oxu (`read` və ya `recv`)
 3. Yaz (`write` və ya `send`)
 4. Bağla (`close`)
+
 
 
 
@@ -76,6 +83,7 @@ Sən kodunda ```write(3, "Salam", 5)``` yazanda nə olur:
     4. Görür ki, `3` nömrəli xana diskdəki fayl deyil, yaddaşda yenicə açılmış bir `socket` şəbəkə resursudur.
     5. Kernel "Salam" baytlarını götürür, şəbəkə kartına (NIC) ötürür ki, kabel/Wi-Fi ilə qarşı tərəfə göndərsin.
     6. İş bitir, CPU yenidən `User-Space`-ə qaydır.
+
 
 
 
